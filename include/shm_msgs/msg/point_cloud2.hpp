@@ -7,5 +7,6 @@
 #include "shm_msgs/msg/point_cloud2m.hpp"
 #include "shm_msgs/msg/point_cloud4m.hpp"
 #include "shm_msgs/msg/point_cloud8m.hpp"
+#include "shm_msgs/msg/point_cloud_ouster.hpp"
 
 #endif  // SHM_MSGS__MSG__POINT_CLOUD2_HPP_

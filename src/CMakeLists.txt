@@ -57,6 +57,8 @@ set(SHM_PCL_FILES
   pcl8k_listener
   pcl1m_listener
   pcl2m_listener
+  pcl_ouster_talker
+  pcl_ouster_listener
 )
 
 foreach(SHM_PCL_EXE ${SHM_PCL_FILES})

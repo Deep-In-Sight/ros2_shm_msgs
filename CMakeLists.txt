@@ -66,6 +66,7 @@ set(msg_files
   "msg/PointCloud2m.msg"
   "msg/PointCloud4m.msg"
   "msg/PointCloud8m.msg"
+  "msg/PointCloudOuster.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
