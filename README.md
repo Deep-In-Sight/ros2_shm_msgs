@@ -80,6 +80,15 @@ pointcloud and image are currently supported.
 
 ### select rmw
 
+#### for rmw_fastrtps_cpp
+
+```sh
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export FASTRTPS_DEFAULT_PROFILES_FILE=$HOME/shm_fastdds.xml
+# export FASTRTPS_DEFAULT_PROFILES_FILE=/ros_ws_shm/src/ros2_shm_msgs/config/shm_fastdds.xml
+export RMW_FASTRTPS_USE_QOS_FROM_XML=1
+```
+
 for rmw_cyclonedds
 
 ```sh
@@ -88,14 +97,6 @@ export CYCLONEDDS_URI=file:///$HOME/shm_cyclonedds.xml
 
 # t0
 iox-roudi
-```
-
-for rmw_fastrtps_cpp
-
-```sh
-export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
-export FASTRTPS_DEFAULT_PROFILES_FILE=$HOME/shm_fastdds.xml
-export RMW_FASTRTPS_USE_QOS_FROM_XML=1
 ```
 
 ### check if zero copy

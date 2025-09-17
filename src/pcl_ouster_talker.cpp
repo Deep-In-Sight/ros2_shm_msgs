@@ -35,7 +35,7 @@ public:
   explicit Talker(const rclcpp::NodeOptions &options)
       : Node("shm_pcl_ouster_talker", options) {
 
-    loadPCDFile("./res/pcd/2m.pcd", *m_input_cloud);
+    loadPCDFile("./res/pcd/ouster.pcd", *m_input_cloud);
 
     auto publishMessage = [this]() -> void {
       auto loanedMsg = m_publisher->borrow_loaned_message();
@@ -50,7 +50,7 @@ public:
     };
 
     rclcpp::QoS qos(rclcpp::KeepLast(10));
-    m_publisher = this->create_publisher<Topic>("shm_pc_ouster", qos);
+    m_publisher = this->create_publisher<Topic>("/ouster/points_shm", qos);
 
     // Use a timer to schedule periodic message publishing.
     m_timer = this->create_wall_timer(0.1s, publishMessage);

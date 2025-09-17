@@ -163,15 +163,15 @@ namespace shm_msgs {
   // passing std::array
   // https://cplusplus.com/forum/general/184301/
 
-  // template <size_t N>
+  template <size_t N>
   inline
-  void fromPCL(const std::vector<pcl::PCLPointField> &pcl_pfs, std::array<shm_msgs::msg::PointField, 8> &pfs)
+  void fromPCL(const std::vector<pcl::PCLPointField> &pcl_pfs, std::array<shm_msgs::msg::PointField, N> &pfs)
   {
     // pfs.resize(pcl_pfs.size());
-    if(pcl_pfs.size() > 8)
+    if(pcl_pfs.size() > N)
     {
       std::stringstream ss;
-      ss << "PointField is wrongly formed: actual size which is " << pcl_pfs.size() << " > " << 8
+      ss << "PointField is wrongly formed: actual size which is " << pcl_pfs.size() << " > " << N
          << " which is the maximum size";
       throw std::runtime_error(ss.str());
     }
@@ -197,11 +197,12 @@ namespace shm_msgs {
    * \param    fields_size input
    * \param    pcl_pfs output
    */
+  template <size_t N>
   inline
-  void toPCL(const std::array<shm_msgs::msg::PointField, 8> &pfs, const int& fields_size, std::vector<pcl::PCLPointField> &pcl_pfs)
+  void toPCL(const std::array<shm_msgs::msg::PointField, N> &pfs, const int& fields_size, std::vector<pcl::PCLPointField> &pcl_pfs)
   {
     pcl_pfs.resize(fields_size);
-    std::array<shm_msgs::msg::PointField, 8>::const_iterator it = pfs.begin();
+    typename std::array<shm_msgs::msg::PointField, N>::const_iterator it = pfs.begin();
     int i = 0;
     for(; i != fields_size; ++it, ++i) {
       toPCL(*(it), pcl_pfs[i]);

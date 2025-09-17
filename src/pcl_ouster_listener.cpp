@@ -17,7 +17,8 @@
 
 #include "rclcpp/rclcpp.hpp"
 
-#include "shm_msgs/msg/point_cloud2.hpp"
+// #include "shm_msgs/msg/point_cloud2.hpp"
+#include "shm_msgs/msg/point_cloud_ouster.hpp"
 #include "shm_msgs/pcl_conversions.h"
 
 // #include <pcl/visualization/cloud_viewer.h>
@@ -57,7 +58,7 @@ public:
     };
 
     rclcpp::QoS qos(rclcpp::KeepLast(10));
-    m_subscription = create_subscription<Topic>("shm_pc_ouster", qos, callback);
+    m_subscription = create_subscription<Topic>("/ouster/points_shm", qos, callback);
   }
 
 private:

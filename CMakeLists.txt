@@ -6,7 +6,7 @@ list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake)
 
 # add installation directory here
 # list(INSERT CMAKE_PREFIX_PATH 0 /opt/open3d/open3d)
-list(INSERT CMAKE_PREFIX_PATH 0 /opt/opencv/opencv-4.6.0/)
+# list(INSERT CMAKE_PREFIX_PATH 0 /opt/opencv/opencv-4.6.0/)
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
@@ -28,7 +28,7 @@ find_package(sensor_msgs REQUIRED)
 
 find_package(ament_cmake REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(Open3D)
+find_package(Open3D QUIET)
 find_package(Boost QUIET)
 find_package(PCL REQUIRED QUIET COMPONENTS common io)
 find_package(pcl_msgs REQUIRED)
@@ -38,7 +38,7 @@ if(NOT OpenCV_FOUND)
   find_package(OpenCV 3 REQUIRED)
 endif()
 
-find_package(iceoryx_posh CONFIG REQUIRED)
+# find_package(iceoryx_posh CONFIG REQUIRED)
 find_package(fastrtps CONFIG REQUIRED)
 
 set(dependencies
@@ -70,7 +70,7 @@ set(msg_files
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
-  DEPENDENCIES builtin_interfaces
+  DEPENDENCIES builtin_interfaces std_msgs geometry_msgs
   ADD_LINTER_TESTS
 )
 
